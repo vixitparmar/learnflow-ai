@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.gitignore
+.dockerignore
+LICENSE
+README.md
+npm-debug.log
+error-page.html
+tests
+coverage
+.env
+.env.*
+!.env.production
