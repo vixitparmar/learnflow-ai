@@ -20,7 +20,7 @@ const GROQ_API_KEY =
   (typeof import.meta !== 'undefined' ? (import.meta as any).env?.VITE_GROQ_API_KEY : undefined) ||
   'your-groq-api-key-here';
 
-const AIAssistant = () => {
+const AIAssistant = ({ isFullPage = false }: { isFullPage?: boolean }) => {
   
   const { messages, addMessage, updateMessage, isTyping, setIsTyping } = useChatStore();
   const [input, setInput] = useState('');
@@ -92,7 +92,7 @@ const AIAssistant = () => {
   };
 
   return (
-    <div className="w-[400px] bg-white border-l border-border h-screen flex flex-col shadow-premium">
+    <div className={`flex flex-col h-full bg-white ${!isFullPage ? 'w-[400px] border-l border-border shadow-premium' : 'w-full'}`}>
       <div className="p-4 border-b border-border flex items-center justify-between bg-primary/5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
