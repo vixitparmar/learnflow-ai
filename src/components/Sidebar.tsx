@@ -7,29 +7,54 @@ import {
   Settings, 
   LogOut,
   Trophy,
-  Zap
+  Zap,
+  Menu,
+  X,
+  Sparkles
 } from 'lucide-react';
 import { useStore } from '../store';
 
-const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => {
+const Sidebar = ({ 
+  activeTab, 
+  setActiveTab, 
+  isOpen, 
+  onClose 
+}: { 
+  activeTab: string, 
+  setActiveTab: (tab: string) => void,
+  isOpen: boolean,
+  onClose: () => void
+}) => {
   const { name, level, streak } = useStore();
 
   const navItems = [
     { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { id: 'learning', icon: BookOpen, label: 'Learning Path' },
     { id: 'quizzes', icon: Zap, label: 'Quizzes' },
+    { id: 'ai-tutor', icon: Sparkles, label: 'AI Tutor' },
     { id: 'analytics', icon: BarChart3, label: 'Analytics' },
     { id: 'notes', icon: FileText, label: 'Notes' },
   ];
 
   return (
-    <aside className="w-64 bg-white border-r border-border h-screen sticky top-0 flex flex-col">
+    <aside className={`
+      fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-border h-screen flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-auto
+      ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+    `}>
       <div className="p-6">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-            <BookOpen className="text-white w-6 h-6" />
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <BookOpen className="text-white w-6 h-6" />
+            </div>
+            <h1 className="text-xl font-bold text-text-primary tracking-tight">LearnFlow <span className="text-primary">AI</span></h1>
           </div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight">LearnFlow <span className="text-primary">AI</span></h1>
+          <button 
+            onClick={onClose}
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <X className="w-5 h-5 text-text-secondary" />
+          </button>
         </div>
 
         <nav className="space-y-1">

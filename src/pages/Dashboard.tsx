@@ -37,14 +37,14 @@ const Dashboard = () => {
   }));
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto bg-background">
+    <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-background">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-text-primary">Welcome back, {name.split(' ')[0]}! 👋</h1>
-        <p className="text-text-secondary mt-1">You've hit your learning goals {streak} days in a row. Keep it up!</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-text-primary">Welcome back, {name.split(' ')[0]}! 👋</h1>
+        <p className="text-text-secondary mt-1 text-sm md:text-base">You've hit your learning goals {streak} days in a row. Keep it up!</p>
       </header>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
         {[
           { label: 'Total XP', value: xp, icon: Star, color: 'text-warning', bg: 'bg-warning/10' },
           { label: 'Current Streak', value: `${streak} Days`, icon: TrendingUp, color: 'text-primary', bg: 'bg-primary/10' },
@@ -67,14 +67,14 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
         {/* Activity Graph */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-border shadow-soft">
-          <div className="flex items-center justify-between mb-6">
+        <div className="lg:col-span-2 bg-white p-4 md:p-6 rounded-xl border border-border shadow-soft">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
             <h3 className="font-bold text-text-primary flex items-center gap-2">
               Learning Activity <span className="text-xs font-normal text-text-secondary">(Mins/Day)</span>
             </h3>
-            <select className="text-xs font-medium border-border rounded-md bg-background px-2 py-1 outline-none">
+            <select className="text-xs font-medium border-border rounded-md bg-background px-2 py-1 outline-none w-full sm:w-auto">
               <option>Last 7 Days</option>
               <option>Last 30 Days</option>
             </select>
@@ -101,7 +101,7 @@ const Dashboard = () => {
         </div>
 
         {/* Skill Analysis */}
-        <div className="bg-white p-6 rounded-xl border border-border shadow-soft">
+        <div className="bg-white p-4 md:p-6 rounded-xl border border-border shadow-soft">
           <h3 className="font-bold text-text-primary mb-6">Strength Analysis</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -123,8 +123,8 @@ const Dashboard = () => {
         {/* Current Module & Recommendations */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white p-6 rounded-xl border border-border shadow-soft border-l-4 border-l-primary">
-            <div className="flex items-start justify-between">
-              <div>
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
+              <div className="flex-1 w-full">
                 <span className="text-[10px] font-bold text-primary uppercase bg-primary/10 px-2 py-0.5 rounded">In Progress</span>
                 <h3 className="text-xl font-bold text-text-primary mt-2">{currentModule?.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</h3>
                 <p className="text-sm text-text-secondary mt-1">Next up: Backpropagation & Optimization Functions</p>
@@ -140,7 +140,7 @@ const Dashboard = () => {
                   <span className="text-sm font-bold text-text-primary">{currentModuleProgress}%</span>
                 </div>
               </div>
-              <button className="bg-primary text-white p-4 rounded-xl shadow-lg hover:bg-secondary transition-all transform hover:scale-105 active:scale-95">
+              <button className="bg-primary text-white p-4 rounded-xl shadow-lg hover:bg-secondary transition-all transform hover:scale-105 active:scale-95 self-end sm:self-start">
                 <PlayCircle className="w-6 h-6" />
               </button>
             </div>

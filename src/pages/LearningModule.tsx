@@ -42,17 +42,17 @@ const LearningModule = () => {
 
   return (
     <div className="flex-1 bg-white overflow-y-auto">
-      <div className="max-w-4xl mx-auto p-12">
-        <header className="flex items-center justify-between mb-12">
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 md:p-12">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4">
           <button className="flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors">
             <ChevronLeft className="w-4 h-4" /> Back to Roadmap
           </button>
-          <div className="flex items-center bg-background rounded-xl p-1 gap-1">
+          <div className="flex items-center bg-background rounded-xl p-1 gap-1 w-full sm:w-auto overflow-x-auto">
             {(['simple', 'intermediate', 'advanced'] as const).map(level => (
               <button
                 key={level}
                 onClick={() => setDifficulty(level)}
-                className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
                   difficulty === level 
                     ? 'bg-white text-primary shadow-sm border border-border' 
                     : 'text-text-secondary hover:text-text-primary'
@@ -72,10 +72,10 @@ const LearningModule = () => {
           className="space-y-8"
         >
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold text-text-primary leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary leading-tight">
               {content[difficulty].title}
             </h1>
-            <div className="flex items-center gap-6 text-sm text-text-secondary">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-text-secondary">
               <span className="flex items-center gap-1.5 font-medium">
                 <BookOpen className="w-4 h-4" /> 12 min read
               </span>
@@ -86,24 +86,24 @@ const LearningModule = () => {
           </div>
 
           <div className="prose prose-slate max-w-none">
-            <p className="text-xl text-text-secondary leading-relaxed first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:float-left">
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed first-letter:text-4xl md:first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:float-left">
               {content[difficulty].text}
             </p>
           </div>
 
-          <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10 relative group overflow-hidden">
+          <div className="bg-primary/5 rounded-2xl p-6 md:p-8 border border-primary/10 relative group overflow-hidden">
             <div className="absolute top-4 right-4">
               <Maximize2 className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" />
             </div>
             <h4 className="flex items-center gap-2 text-sm font-bold text-primary mb-6">
               <Lightbulb className="w-4 h-4" /> Visual Conceptualization
             </h4>
-            <div className="h-48 flex items-center justify-center bg-white rounded-xl shadow-sm border border-border font-mono text-lg text-primary p-6 text-center">
+            <div className="min-h-[12rem] flex items-center justify-center bg-white rounded-xl shadow-sm border border-border font-mono text-base md:text-lg text-primary p-6 text-center">
               {content[difficulty].visual}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-8">
             <div className="p-6 bg-background rounded-xl border border-border hover:border-primary transition-all cursor-pointer group">
               <h5 className="font-bold text-text-primary mb-2 flex justify-between items-center">
                 Interactive Card: The Neuron
@@ -121,18 +121,18 @@ const LearningModule = () => {
           </div>
         </motion.div>
 
-        <footer className="mt-16 pt-8 border-t border-border flex items-center justify-between">
-          <div className="flex gap-2">
-            <button className="btn-secondary">
+        <footer className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-2 w-full sm:w-auto">
+            <button className="btn-secondary flex-1 sm:flex-none">
               Review Previous
             </button>
-            <button className="flex items-center gap-2 text-primary font-bold px-6 py-2 hover:bg-primary/5 rounded-lg transition-colors">
+            <button className="flex items-center gap-2 text-primary font-bold px-4 py-2 hover:bg-primary/5 rounded-lg transition-colors text-sm">
               <Lightbulb className="w-4 h-4" /> Need simpler?
             </button>
           </div>
           <button 
             onClick={handleContinue}
-            className="btn-primary flex items-center gap-2"
+            className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto px-8"
           >
             Continue to Quiz <ChevronRight className="w-5 h-5" />
           </button>

@@ -102,10 +102,10 @@ const QuizInterface = () => {
   }
 
   return (
-    <div className="flex-1 bg-background flex flex-col p-12 overflow-y-auto">
+    <div className="flex-1 bg-background flex flex-col p-4 sm:p-6 md:p-12 overflow-y-auto">
       <div className="max-w-3xl mx-auto w-full">
-        <header className="mb-12 flex items-center justify-between">
-          <div className="flex-1 pr-12">
+        <header className="mb-8 md:mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex-1 w-full sm:pr-12">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-text-secondary">Question {currentQuestion + 1} of {questions.length}</span>
               <span className="text-xs font-bold text-primary">Unit: Neural Architecture</span>
@@ -118,24 +118,24 @@ const QuizInterface = () => {
               />
             </div>
           </div>
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-border shadow-soft">
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-border shadow-soft self-end sm:self-auto">
             <Timer className="w-4 h-4 text-text-secondary" />
             <span className="text-sm font-mono font-bold">14:02</span>
           </div>
         </header>
 
-        <div className="space-y-8">
-          <h2 className="text-2xl font-bold text-text-primary leading-tight">
+        <div className="space-y-6 md:space-y-8">
+          <h2 className="text-xl md:text-2xl font-bold text-text-primary leading-tight">
             {questions[currentQuestion].question}
           </h2>
 
-          <div className="grid gap-4">
+          <div className="grid gap-3 md:gap-4">
             {questions[currentQuestion].options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleOptionClick(index)}
                 disabled={isAnswered}
-                className={`p-6 rounded-2xl border-2 text-left transition-all relative group overflow-hidden ${
+                className={`p-4 md:p-6 rounded-2xl border-2 text-left transition-all relative group overflow-hidden ${
                   isAnswered 
                     ? index === questions[currentQuestion].correct
                       ? 'border-accent bg-accent/5'
@@ -145,8 +145,8 @@ const QuizInterface = () => {
                     : 'border-border hover:border-primary hover:bg-primary/5 active:scale-[0.99]'
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm ${
                     isAnswered && index === questions[currentQuestion].correct
                       ? 'bg-accent text-white'
                       : isAnswered && index === selectedOption
@@ -155,7 +155,7 @@ const QuizInterface = () => {
                   }`}>
                     {String.fromCharCode(65 + index)}
                   </div>
-                  <span className={`font-semibold ${
+                  <span className={`font-semibold text-sm md:text-base ${
                     isAnswered && index === questions[currentQuestion].correct
                       ? 'text-accent'
                       : isAnswered && index === selectedOption
@@ -164,10 +164,10 @@ const QuizInterface = () => {
                   }`}>{option}</span>
                 </div>
                 {isAnswered && index === questions[currentQuestion].correct && (
-                  <CheckCircle2 className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-accent" />
+                  <CheckCircle2 className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-5 h-5 md:w-6 md:h-6 text-accent" />
                 )}
                 {isAnswered && index === selectedOption && index !== questions[currentQuestion].correct && (
-                  <XCircle className="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-error" />
+                  <XCircle className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-5 h-5 md:w-6 md:h-6 text-error" />
                 )}
               </button>
             ))}

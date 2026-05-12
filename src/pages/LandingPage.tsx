@@ -35,37 +35,38 @@ const LandingPage = ({ onGetStarted }: { onGetStarted: () => void }) => {
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-20 pb-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <main className="max-w-7xl mx-auto px-6 pt-10 md:pt-20 pb-20 md:pb-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-xs font-bold mb-6">
               <Sparkles className="w-4 h-4" />
               Revolutionizing Personal Education
             </div>
-            <h1 className="text-7xl font-extrabold text-text-primary leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-text-primary leading-[1.1] mb-6">
               Learn faster, <br />
               <span className="text-primary">powered by AI.</span>
             </h1>
-            <p className="text-xl text-text-secondary mb-10 max-w-lg leading-relaxed">
+            <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Design your personalized learning path with an AI tutor that adapts to your pace, behavior, and understanding.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button 
                 onClick={onGetStarted}
-                className="btn-primary px-10 py-5 text-lg flex items-center justify-center gap-3 shadow-xl shadow-primary/25"
+                className="btn-primary px-8 md:px-10 py-4 md:py-5 text-base md:text-lg flex items-center justify-center gap-3 shadow-xl shadow-primary/25"
               >
                 Get Started for Free <ArrowRight className="w-6 h-6" />
               </button>
-              <button className="btn-secondary px-10 py-5 text-lg">
+              <button className="btn-secondary px-8 md:px-10 py-4 md:py-5 text-base md:text-lg">
                 View Demo
               </button>
             </div>
             
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map(i => (
                   <div key={i} className="w-10 h-10 rounded-full border-4 border-background bg-gray-200 overflow-hidden">
@@ -84,7 +85,7 @@ const LandingPage = ({ onGetStarted }: { onGetStarted: () => void }) => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full -z-10" />
             <div className="bg-white rounded-[32px] border border-border shadow-2xl p-8 relative overflow-hidden">
@@ -137,13 +138,13 @@ const LandingPage = ({ onGetStarted }: { onGetStarted: () => void }) => {
       </main>
 
       {/* Features Grid */}
-      <section className="bg-white py-32">
-        <div className="max-w-7xl mx-auto px-6 text-center mb-20">
-          <h2 className="text-4xl font-bold text-text-primary mb-4">Master any subject with ease</h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">LearnFlow combines neuro-science with cutting edge AI to create the ultimate learning experience.</p>
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">Master any subject with ease</h2>
+          <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base">LearnFlow combines neuro-science with cutting edge AI to create the ultimate learning experience.</p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
             { 
               title: "Adaptive Tutoring", 
@@ -167,7 +168,7 @@ const LandingPage = ({ onGetStarted }: { onGetStarted: () => void }) => {
             <div key={i} className="p-8 rounded-3xl border border-border hover:border-primary/20 hover:bg-primary/5 transition-all group">
               <feature.icon className={`w-12 h-12 ${feature.color} mb-6 group-hover:scale-110 transition-transform`} />
               <h3 className="text-xl font-bold text-text-primary mb-4">{feature.title}</h3>
-              <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
+              <p className="text-text-secondary leading-relaxed text-sm md:text-base">{feature.desc}</p>
             </div>
           ))}
         </div>

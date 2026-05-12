@@ -35,19 +35,19 @@ const NotesPage = () => {
   };
 
   return (
-    <div className="flex-1 bg-background p-8 overflow-y-auto">
-      <header className="flex items-center justify-between mb-10">
+    <div className="flex-1 bg-background p-4 md:p-8 overflow-y-auto">
+      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-10 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-text-primary">Smart Notes</h1>
-          <p className="text-text-secondary mt-1">AI-powered insights from your learning journey.</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary">Smart Notes</h1>
+          <p className="text-text-secondary mt-1 text-sm">AI-powered insights from your learning journey.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 bg-white text-text-primary border border-border px-4 py-2 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-all">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white text-text-primary border border-border px-4 py-2 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-all">
             <Download className="w-4 h-4" /> Export
           </button>
           <button 
             onClick={() => setIsAdding(true)}
-            className="btn-primary flex items-center gap-2"
+            className="flex-1 sm:flex-none btn-primary flex items-center justify-center gap-2"
           >
             <Plus className="w-4 h-4" /> New Note
           </button>
@@ -120,7 +120,7 @@ const NotesPage = () => {
                         <FileText className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-text-primary group-hover:text-primary transition-colors">{note.title}</h3>
+                        <h3 className="font-bold text-text-primary group-hover:text-primary transition-colors line-clamp-1">{note.title}</h3>
                         <p className="text-xs text-text-secondary">{new Date(note.timestamp).toLocaleDateString()}</p>
                       </div>
                     </div>
@@ -128,7 +128,7 @@ const NotesPage = () => {
                       <MoreVertical className="w-5 h-5 text-text-secondary" />
                     </button>
                   </div>
-                  <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                  <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-3">
                     {note.summary || note.content.substring(0, 150) + "..."}
                   </p>
                 </div>
